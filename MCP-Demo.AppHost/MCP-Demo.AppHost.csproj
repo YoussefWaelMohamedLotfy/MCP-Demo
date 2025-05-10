@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Sdk Name="Aspire.AppHost.Sdk" Version="9.2.0" />
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsAspireHost>true</IsAspireHost>
+		<UserSecretsId>b3b33034-927f-4951-8a18-893511a57e1f</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Aspire.Hosting.AppHost" Version="9.2.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Agent-Server\Agent-Server.csproj" />
+		<ProjectReference Include="..\MCP-Client-Blazor\MCP-Client-Blazor.csproj" />
+		<ProjectReference Include="..\MCP-Server\MCP-Server.csproj" />
+	</ItemGroup>
+
+</Project>
