@@ -83,7 +83,13 @@
 			var assistantResponse = new ChatMessage { Text = string.Empty, IsUser = false };
 			Messages.Add(assistantResponse);
 
-			await RenderMessageFromHttp(prompt, assistantResponse);
+			// await RenderMessageFromHttp(prompt, assistantResponse);
+			await foreach (var token in httpClient.GetFromJsonAsAsyncEnumerable<string>($"/chat?prompt={prompt}"))
+			{
+				assistantResponse.Text += token;
+				StateHasChanged();
+				await Task.Delay(200);
+			}
 		}
 	}
 
@@ -92,6 +98,7 @@
 		await foreach (var token in httpClient.GetFromJsonAsAsyncEnumerable<string>($"/chat?prompt={prompt}"))
 		{
 			message.Text += token;
+			await Task.Delay(200);
 		}
 	}
 

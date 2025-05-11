@@ -1,5 +1,6 @@
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Connectors.Ollama;
+using Microsoft.SemanticKernel.Plugins.OpenApi;
 using ModelContextProtocol.Client;
 using ModelContextProtocol.Protocol.Transport;
 using Scalar.AspNetCore;
@@ -42,10 +43,16 @@ app.MapGet("/chat", (string prompt, Kernel kernel, CancellationToken ct) =>
     var executionSettings = new OllamaPromptExecutionSettings
     {
         Temperature = 0,
-        FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
+        FunctionChoiceBehavior = FunctionChoiceBehavior.Auto(),
     };
 #pragma warning restore SKEXP0070 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
-
+    //await kernel.ImportPluginFromOpenApiAsync("TestMcpServer",
+    //    new Uri("https://localhost:7185/openapi/v1.json"),
+    //    new()
+    //    {
+    //        EnablePayloadNamespacing = true
+    //    },
+    //    ct);
     return kernel.InvokePromptStreamingAsync<string>(prompt, new(executionSettings), cancellationToken: ct);
 });
 
