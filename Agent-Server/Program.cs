@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
-var mcpClient = await GetMCPClientForPlaywright();
+var mcpClient = await GetMCPClient();
 var tools = await mcpClient.ListToolsAsync();
 
 foreach (var tool in tools)
@@ -51,7 +51,7 @@ app.MapGet("/chat", (string prompt, Kernel kernel, CancellationToken ct) =>
 
 await app.RunAsync();
 
-static async Task<IMcpClient> GetMCPClientForPlaywright()
+static async Task<IMcpClient> GetMCPClient()
 {
     McpClientOptions options = new()
     {
