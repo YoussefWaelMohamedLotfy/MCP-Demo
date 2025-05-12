@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Agent-Server/Agent-Server.csproj" />
+  <Project Path="MCP-Client-Blazor/MCP-Client-Blazor.csproj" />
+  <Project Path="MCP-Demo.AppHost/MCP-Demo.AppHost.csproj" />
+  <Project Path="MCP-Demo.ServiceDefaults/MCP-Demo.ServiceDefaults.csproj" />
+  <Project Path="MCP-Server/MCP-Server.csproj" />
+</Solution>
