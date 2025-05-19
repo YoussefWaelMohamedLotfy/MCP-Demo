@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BootstrapBlazor" Version="9.6.1" />
+		<PackageReference Include="BootstrapBlazor" Version="9.6.3" />
 		<PackageReference Include="BootstrapBlazor.FontAwesome" Version="9.0.2" />
 	</ItemGroup>
 

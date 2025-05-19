@@ -86,9 +86,11 @@
 			// await RenderMessageFromHttp(prompt, assistantResponse);
 			await foreach (var token in httpClient.GetFromJsonAsAsyncEnumerable<string>($"/chat?prompt={prompt}"))
 			{
-				assistantResponse.Text += token;
-				StateHasChanged();
-				await Task.Delay(200);
+				if (!string.IsNullOrWhiteSpace(token))
+				{
+					assistantResponse.Text += token;
+					StateHasChanged();
+				}
 			}
 		}
 	}
