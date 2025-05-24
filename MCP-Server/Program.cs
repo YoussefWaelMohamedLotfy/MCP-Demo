@@ -31,7 +31,7 @@ app.UseHttpsRedirection();
 
 app.MapMcp();
 
-// API mappings
+#region Endpoints
 app.MapPost("/products", async (FakeApiService service, Product product) =>
 {
     var result = await service.CreateProductAsync(product);
@@ -71,6 +71,7 @@ app.MapDelete("/products/{id:int}", async (FakeApiService service, int id) =>
 })
 .WithName("DeleteProduct")
 .WithDescription("Deletes a product by its ID from the Fake Store API.");
+#endregion
 
 await app.RunAsync();
  
